@@ -1,0 +1,28 @@
+{
+    "name": "jormin/geetest",
+    "type": "library",
+    "description": "极验验证码",
+    "keywords": [
+        "Jormin",
+        "极验验证码"
+    ],
+    "homepage": "https://github.com/jormin/geetest",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jormin",
+            "email": "jorminxee@gmail.com",
+            "homepage": "https://blog.lerzen.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jormin\\TuLing\\": "src"
+        }
+    }
+}
