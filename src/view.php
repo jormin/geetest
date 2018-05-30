@@ -1,25 +1,25 @@
 <div id="embed-captcha"></div>
-<p id="wait" class="show">正在加载验证码......</p>
-<p id="notice" class="hide"><?= $config['clientFailAlert'] ?></p>
+<p id="wait">正在加载验证码......</p>
+<p id="notice" style="display: none;"><?= $clientFailAlert ?></p>
 <script>
     var handlerEmbed = function (captchaObj) {
         $("#embed-submit").click(function (e) {
             var validate = captchaObj.getValidate();
             if (!validate) {
-                $("#notice")[0].className = "show";
+                $("#notice").show();
                 setTimeout(function () {
-                    $("#notice")[0].className = "hide";
+                    $("#notice").hide();
                 }, 2000);
                 e.preventDefault();
             }
         });
         captchaObj.appendTo("#embed-captcha");
         captchaObj.onReady(function () {
-            $("#wait")[0].className = "hide";
+            $("#wait").hide();
         });
     };
     $.ajax({
-        url: "<?= $config['captchaUrl'] ?>", // 加随机数防止缓存
+        url: "<?= $captchaUrl ?>", // 加随机数防止缓存
         type: "get",
         dataType: "json",
         success: function (data) {
@@ -27,9 +27,9 @@
                 gt: data.gt,
                 challenge: data.challenge,
                 new_captcha: data.new_captcha,
-                lang: '<?= $config['lang'] ?>',
-                width: '<?= $config['width'] ?>',
-                product: '<?= $config['product'] ?>',
+                lang: '<?= $lang ?>',
+                width: '<?= $width ?>',
+                product: '<?= $product ?>',
                 offline: !data.success
             }, handlerEmbed);
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jormin\TuLing;
+namespace Jormin\Geetest;
 
 use GuzzleHttp\Client;
 
@@ -202,7 +202,7 @@ class Geetest{
      * @param string $clientType
      */
     public function captcha($userID = 'test', $clientType = 'web'){
-        session_start();
+        !isset($_SESSION) && session_start();
         $data = array(
             "user_id" => $userID,
             "client_type" => $clientType,
@@ -211,7 +211,7 @@ class Geetest{
         $status = $this->preProcess($data, 1);
         $_SESSION['gtServer'] = $status;
         $_SESSION['gtUserID'] = $data['user_id'];
-        echo json_encode($this->response);
+        return json_encode($this->response);
     }
 
     /**
@@ -240,6 +240,6 @@ class Geetest{
      */
     public function view(){
         extract($this->config);
-        echo include './view.php';;
+        include 'view.php';
     }
 }
