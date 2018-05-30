@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 /**
  * 极验验证码
  *
- * @package Jormin\TuLing
+ * @package Jormin\Geetest
  */
 class Geetest{
 
