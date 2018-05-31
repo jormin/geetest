@@ -125,11 +125,10 @@ class Geetest{
             'query' => http_build_query($query)
         ]);
         $response = $response->getBody()->getContents();
-        $obj = json_decode($response,true);
-        if ($obj === false){
+        if ($response === false){
             return 0;
         }
-        if ($obj['seccode'] == md5($seccode)) {
+        if ($response == md5($seccode)) {
             return 1;
         } else {
             return 0;
