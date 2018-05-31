@@ -15,8 +15,10 @@ $ composer require jormin/geetest -vvv
 $geetest = new \Jormin\Geetest\Geetest($config);
 ```
 
-2. 在模板中需要使用验证码的地方增加下述代码渲染
+2. 在模板中引入 [jquery.min.js](https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js) 和 [gt.js](http://static.geetest.com/static/tools/gt.js) ,在需要使用验证码的地方增加下述代码渲染
 
+    > gt.js 建议放在本地,防止极验验证码服务器宕机影响自己的站点
+    
 ``` php
 <?= $geetest->view(); ?>
 ```
