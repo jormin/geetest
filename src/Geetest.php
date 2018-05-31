@@ -122,7 +122,7 @@ class Geetest{
         $url = "http://api.geetest.com/validate.php";
         $client = new Client();
         $response = $client->post($url, [
-            'body' => http_build_query($query)
+            'query' => http_build_query($query)
         ]);
         $response = $response->getBody()->getContents();
         $obj = json_decode($response,true);
