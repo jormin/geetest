@@ -2,37 +2,35 @@
 
 ## 安装
 
-1. 项目根目录下安装
-
-    ``` bash
-    $ composer require jormin/geetest -vvv
-    ```
+``` bash
+$ composer require jormin/geetest -vvv
+```
 
 ## 使用
 
 1. 生成极验验证码对象
 
-    ``` php
-    // $config 参数见下方[配置项]
-    $geetest = new \Jormin\Geetest\Geetest($config);
-    ```
+``` php
+// $config 参数见下方[配置项]
+$geetest = new \Jormin\Geetest\Geetest($config);
+```
 
- 2. 在模板中需要使用验证码的地方增加下述代码渲染
+2. 在模板中需要使用验证码的地方增加下述代码渲染
 
-	``` php
-	<?= $geetest->view(); ?>
-	```
- 3. 在 `captchaUrl` 路由指定的操作中,获取验证码参数
-    
-    ```php
-    echo $geetest->captcha();
-    ```
- 4. 随表单提交时,服务端校验验证码
-    
-    ```php
-    // 校验记过为 true 或 false
-    $geetest->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
-    ```
+``` php
+<?= $geetest->view(); ?>
+```
+3. 在 `captchaUrl` 路由指定的操作中,获取验证码参数
+
+```php
+echo $geetest->captcha();
+```
+4. 随表单提交时,服务端校验验证码
+
+```php
+// 校验记过为 true 或 false
+$geetest->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
+```
 
 ## 配置项
 
