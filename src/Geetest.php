@@ -217,12 +217,14 @@ class Geetest{
 
     /**
      * 服务端校验
+     *
+     * @param $geetestChallenge
+     * @param $geetestValidate
+     * @param $geetestSeccode
+     * @return bool
      */
-    public function validate()
+    public function validate($geetestChallenge, $geetestValidate, $geetestSeccode)
     {
-        $geetestChallenge = $_POST['geetest_challenge'];
-        $geetestValidate = $_POST['geetest_validate'];
-        $geetestSeccode = $_POST['geetest_seccode'];
         if ($_SESSION['gtServer'] == 1) {
             if ($this->successValidate($geetestChallenge, $geetestValidate, $geetestSeccode, ['user_id' => $_SESSION['gtUserID']])) {
                 return true;

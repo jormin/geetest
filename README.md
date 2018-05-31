@@ -2,11 +2,37 @@
 
 ## 安装
 
- 1. 安装包文件
+1. 项目根目录下安装
 
-	``` bash
-	$ composer require jormin/geetest
+    ``` bash
+    $ composer require jormin/geetest -vvv
+    ```
+
+## 使用
+
+1. 生成极验验证码对象
+
+    ``` php
+    // $config 参数见下方[配置项]
+    $geetest = new \Jormin\Geetest\Geetest($config);
+    ```
+
+ 2. 在模板中需要使用验证码的地方增加下述代码渲染
+
+	``` php
+	<?= $geetest->view(); ?>
 	```
+ 3. 在 `captchaUrl` 路由指定的操作中,获取验证码参数
+    
+    ```php
+    echo $geetest->captcha();
+    ```
+ 4. 随表单提交时,服务端校验验证码
+    
+    ```php
+    // 校验记过为 true 或 false
+    $geetest->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
+    ```
 
 ## 配置项
 
@@ -15,34 +41,11 @@
 | width | 按钮宽度  | 单位可以是 px, %, em, rem, pt  | 300px|
 | lang | 语言，极验验证码免费版不支持多国语言  | zh-cn, en, zh-tw, ja, ko, th  | zh-cn  |
 | product  | 验证码展示方式  | popup, float  | popup  |
-| geetest_id  | 极验验证码ID  |   |   |
-| geetest_key  | 极验验证码KEY  |   |   |
-| client_fail_alert  | 客户端失败提示语  |   | 请完成验证码  |
-| server_fail_alert  | 服务端失败提示语  |   | 验证码校验失败  |
-
-## 使用
-
-1. 前端使用
-
-安装扩展后，在页面需要使用极验验证码的地方增加如下代码
-
-```php
-{!! Geetest::render() !!}
-```
-
-2. 服务端校验
-
-在服务端使用 `geetest` 验证规则进行二次验证，示例代码：
-
-```php
-$this->validate($request, [
-    'geetest_challenge' => 'required|geetest',
-    'geetest_validate' => 'required|geetest',
-    'geetest_seccode' => 'required|geetest',
-], [
-    'geetest' => config('laravel-geetest.server_fail_alert')
-]);
-```
+| geetestID  | 极验验证码ID  |   |   |
+| geetestKey  | 极验验证码KEY  |   |   |
+| clientFailAlert  | 客户端失败提示语  |   | 请完成验证码  |
+| serverFailAlert  | 服务端失败提示语  |   | 验证码校验失败  |
+| captchaUrl  | 获取验证码初始化参数路由  |   |   |
 
 ## 参考图
 
@@ -50,7 +53,7 @@ $this->validate($request, [
 
 ## 参考项目
 
-1. [Germey/LaravelGeetest](https://github.com/Germey/LaravelGeetest)
+1. [Jormin/LaravelGeetest](https://github.com/jormin/laravel-geetest)
 
 2. [GeeTeam/gt3-php-sdk](https://github.com/GeeTeam/gt3-php-sdk)
 
