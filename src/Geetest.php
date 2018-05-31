@@ -200,6 +200,7 @@ class Geetest{
      *
      * @param string $userID
      * @param string $clientType
+     * @return string
      */
     public function captcha($userID = 'test', $clientType = 'web'){
         !isset($_SESSION) && session_start();
