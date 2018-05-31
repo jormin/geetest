@@ -28,7 +28,7 @@ echo $geetest->captcha();
 4. 随表单提交时,服务端校验验证码
 
 ```php
-// 校验记过为 true 或 false
+// 校验结果为 true 或 false
 $geetest->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
 ```
 
@@ -36,7 +36,7 @@ $geetest->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_PO
 
 | 配置项  | 说明  | 选项  | 默认值  |
 | ------------ | ------------ | ------------ | ------------ |
-| width | 按钮宽度  | 单位可以是 px, %, em, rem, pt  | 300px|
+| width | 按钮宽度  | 单位可以是 px, %, em, rem, pt  | 100%|
 | lang | 语言，极验验证码免费版不支持多国语言  | zh-cn, en, zh-tw, ja, ko, th  | zh-cn  |
 | product  | 验证码展示方式  | popup, float  | popup  |
 | geetestID  | 极验验证码ID  |   |   |

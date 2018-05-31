@@ -18,7 +18,7 @@ class Geetest{
     public $geetestID, $geetestKey, $config;
 
     public static $defaultConfig = [
-        'width' => '300px',
+        'width' => '100%',
         'lang' => 'zh-cn',
         'product' => 'popup',
         'clientFailAlert' => '请完成验证码',
